@@ -1,0 +1,1 @@
+find . -maxdepth 1 -exec basename {} \; | sort -t$'\n' -k 1.2 | sed ':a;N;$!ba;s/\n/, /g' | sed 's/$/\n/'
