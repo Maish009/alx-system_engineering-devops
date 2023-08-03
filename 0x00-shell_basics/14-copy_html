@@ -1,6 +1,16 @@
 #!/bin/bash
+# Navigate to the current working directory
+cd "$(dirname "$0")" || exit
+
+# Set the parent directory path
+parent_dir="../"
+
+# Loop through all HTML files in the current working directory
 for file in *.html; do
-    if [ ! -e "../$file" ] || [ "$file" -nt "../$file" ]; then
-        cp "$file" "../"
+    # Check if the file exists in the parent directory or is newer
+    if [ ! -e "$parent_dir$file" ] || [ "$file" -nt "$parent_dir$file" ]; then
+        # Copy the file to the parent directory
+        cp "$file" "$parent_dir$file"
+        echo "Copied $file to $parent_dir$file"
     fi
 done
